@@ -28,5 +28,5 @@
   "peerDependencies": {
     "grunt": "~0.4.1"
   },
-  "keywords": ["gruntplugin"],
+  "keywords": ["gruntplugin"]
 }
