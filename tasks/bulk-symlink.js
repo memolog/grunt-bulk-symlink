@@ -6,6 +6,8 @@
  * Licensed under the MIT license.
  */
 
+var path = require('path');
+
 module.exports = function (grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
@@ -18,15 +20,16 @@ module.exports = function (grunt) {
     var dir = this.data.dir;
     grunt.util.async.forEachSeries(files, function (file, next) {
       var filename = file.replace(/\/$/, '');
-      filename = filename.substr(filename.lastIndexOf('/') + 1);
+      filename = path.basename(filename);
+      var link = path.join(dir, filename);
 
       grunt.util.spawn({
         grunt: true,
-        args: ['symlink:bulkSymlink', '--bulkSymlinkTarget', file, '--bulkSymlinkLink', dir + filename]
+        args: ['symlink:bulkSymlink', '--bulkSymlinkTarget=' + file, '--bulkSymlinkLink=' + link]
       }, function (error, result, code) {
         if (!error) {
           if (result) {
-            grunt.log.ok('symlink ' + file + ' to ' + dir + filename + '\n');
+            grunt.log.ok('symlink ' + file + ' to ' + link + '\n');
           } else {
             grunt.warn('got no result from ' + file + '(' + code + ')\n');
           }
