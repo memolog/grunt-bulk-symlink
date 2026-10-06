@@ -1,7 +1,7 @@
 {
   "name": "grunt-bulk-symlink",
   "description": "run grunt-symbolic-link task repeatedly. It's useful when you want to pick some files up and symlink them into one destination directory.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "http://memolog.org/",
   "author": {
     "name": "Yutaka Yamaguchi",
